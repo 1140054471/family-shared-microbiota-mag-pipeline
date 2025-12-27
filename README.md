@@ -30,7 +30,7 @@ cat sample.list | parallel --plus --j 10 vamb --fasta {}/{}_rename.fa --jgi {}/{
 -m 2000 -p 16 -t 64 --minfasta  200000 -o _
 
 5./#采用DAS_Tool挑选vamb和metabat2组装结果中好的基因组
-mkdir 06DAS_tools
+mkdir 04DAS_tools
 ls -d E* | parallel -j 5 DAS_Tool -i {}/{}/metabat2_bins.scaffolds2bin.tsv,{}/{}.t64.min2k/bins/vamb_bins.scaffolds2bin.tsv -l metabat2,vamb -c ../02megahitbwadepth/{}/{}_rename.2k.fa -o {}/DAS_Tool -t 30 --search_engine diamond --write_bins
 for i in `ls -d E*`; do Fasta_to_Scaffolds2Bin.sh -i ${i}/DAS_Tool_DASTool_bins/ -e fa > ${i}/DAS_Tool_DASTool_bins/${i}_DAS_Tools_bins.scaffolds2bin.tsv; done
 cat sample.list |parallel --plus --j 5 checkm lineage_wf -x fa -t 40 --pplacer_threads 40 {}/DAS_Tool_DASTool_bins {}.checkm
