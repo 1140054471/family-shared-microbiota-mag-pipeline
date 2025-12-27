@@ -1,6 +1,8 @@
 # family-shared-microbiota-mag-pipeline
 This repository contains the complete computational workflow and scripts for reproducing the analysis in ‘Types and characteristics of shared microbiota within families of ethnic minorities in Inner Mongolia’, from raw sequencing reads (64 samples) to metagenome-assembled genomes (MAGs) and downstream analyses.
 
+The raw sequencing data generated in this study have been deposited in the NCBI SRA database under BioProject accession number PRJNA919082 and are accessible via the following URL: https://www.ncbi.nlm.nih.gov/sra/PRJNA919082.
+
 1./#数据质控
 klab_metaqc list -i Rawdata -s list_sample  /#生成样品列表
 klab_metaqc qc -s list_sample -o qc_family_result -t human -j 3  /#质控 
